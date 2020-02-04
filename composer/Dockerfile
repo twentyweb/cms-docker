@@ -1,4 +1,4 @@
-FROM twentyweb/cms-base:latest
+FROM twentyweb/cms-base:7.4
 
 ARG COMPOSER_GITLAB
 

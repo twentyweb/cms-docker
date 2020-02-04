@@ -1,4 +1,4 @@
-FROM twentyweb/base:7.4
+FROM twentyweb/cms-base:7.4
 
 RUN apk add mysql-client nodejs npm
     && npm install --global puppeteer
