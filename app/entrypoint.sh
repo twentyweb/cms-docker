@@ -31,7 +31,7 @@ fi
 
 if [ "$role" = "app" ]; then
 
-  php resources:update || true
+  php artisan resources:update || true
 	php artisan migrate --verbose --no-interaction --force
   php-fpm
 
