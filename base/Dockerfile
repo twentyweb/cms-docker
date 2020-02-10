@@ -18,4 +18,5 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
     	soap \
     	zip \
         imagick \
-        exif
+        exif \
+        redis
