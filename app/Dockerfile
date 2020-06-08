@@ -7,16 +7,10 @@ RUN apk add --no-cache mysql-client nodejs npm chromium \
 
 COPY conf.d $PHP_INI_DIR/conf.d/
 
-COPY entrypoint.sh .
+COPY prepare.sh entrypoint.sh ./
 
-RUN mkdir -p storage/app/public && \
-	mkdir -p storage/backups && \
-	mkdir -p storage/framework/cache && \
-	mkdir -p storage/framework/sessions && \
-	mkdir -p storage/framework/views && \
-	mkdir -p storage/logs && \
-	chmod ug+wx -R storage && \
-	chmod +x entrypoint.sh
+RUN chmod +x prepare.sh \
+    && chmod +x entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
 

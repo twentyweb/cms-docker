@@ -10,6 +10,8 @@ fi
 role=${CONTAINER_ROLE:-app}
 app_env=${APP_ENV:-production}
 
+echo "Running in $app_env environment"
+
 
 if [ $# -ne 0 ]; then
 	$@
@@ -24,15 +26,16 @@ if [ "$app_env" != "local" ]; then
 
     echo "Caching configuration..."
     php artisan config:cache
-    php artisan route:cache
 
 fi
 
 
 if [ "$role" = "app" ]; then
 
-  php artisan resources:update || true
+  php artisan route:cache
+  php artisan view:cache
 	php artisan migrate --verbose --no-interaction --force
+  php artisan resources:update || true
   php-fpm
 
 elif [ "$role" = "queue" ]; then
@@ -40,6 +43,11 @@ elif [ "$role" = "queue" ]; then
 	echo "Running the queue..."
 	queue=${QUEUE:-default}
   php artisan queue:work --queue=$queue --verbose --tries=3 --timeout=90
+
+elif [ "$role" = "horizon" ]; then
+
+	echo "Running horizon..."
+  php artisan horizon
 
 elif [ "$role" = "scheduler" ]; then
 
