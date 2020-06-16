@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine3.11
+FROM php:7.4-fpm-alpine3.12
 
 WORKDIR /app
 
@@ -7,16 +7,16 @@ ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/mas
 RUN chmod uga+x /usr/local/bin/install-php-extensions \
     && install-php-extensions \
         bcmath \
-    	gd \
-    	gettext \
-    	gmp \
-    	intl \
-    	mysqli \
-    	opcache \
-    	pcntl \
-    	pdo_mysql \
-    	soap \
-    	zip \
+        gd \
+        gettext \
+        gmp \
+        intl \
+        mysqli \
+        opcache \
+        pcntl \
+        pdo_mysql \
+        soap \
+        zip \
         imagick \
         exif \
         redis
