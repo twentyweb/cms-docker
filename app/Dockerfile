@@ -1,9 +1,11 @@
 FROM twentyweb/cms-base:7.4
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium-browser
 
-RUN apk add --no-cache mysql-client nodejs npm chromium \
-    && npm install --global --unsafe-perm puppeteer@4.0.0
+RUN apk update \
+    && apk add --no-cache mysql-client nodejs npm chromium=86.0.4240.111-r0 \
+    && npm install --global --unsafe-perm puppeteer@5.3.1
 
 RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY conf.d $PHP_INI_DIR/conf.d/

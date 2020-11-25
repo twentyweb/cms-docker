@@ -1,6 +1,8 @@
 .PHONY: base composer app assets nginx push
 
-all: base composer app app-no-puppeteer assets nginx
+all: build push
+
+build: base composer app app-no-puppeteer assets nginx
 
 base:
 	docker build -t twentyweb/cms-base:latest -t twentyweb/cms-base:7.4 ./base
@@ -20,7 +22,7 @@ assets:
 nginx:
 	docker build -t twentyweb/cms-nginx:latest ./nginx
 
-push: all
+push:
 	docker push twentyweb/cms-base:latest
 	docker push twentyweb/cms-base:7.4
 	docker push twentyweb/cms-composer:latest
