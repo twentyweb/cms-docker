@@ -1,5 +1,7 @@
 FROM php:7.4-fpm-alpine3.12
 
+ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
+
 WORKDIR /app
 
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
@@ -19,4 +21,5 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
         zip \
         imagick \
         exif \
-        redis
+        redis \
+    && apk add --no-cache musl-locales
