@@ -1,4 +1,4 @@
-FROM node:12-alpine as assets
+FROM node:14-alpine as assets
 
 WORKDIR /app
 
