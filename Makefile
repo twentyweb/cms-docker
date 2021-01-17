@@ -35,4 +35,4 @@ assets:
 	docker buildx build --pull --push --file assets/Dockerfile -t twentyweb/cms-assets:latest ./assets
 
 nginx:
-	docker buildx build --pull --push --file nginx/Dockerfile -t twentyweb/cms-nginx:latest ./app
+	docker buildx build --pull --push --file nginx/Dockerfile -t twentyweb/cms-nginx:latest ./nginx
