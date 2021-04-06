@@ -1,0 +1,5 @@
+#!/bin/sh
+
+s6-setuidgid www-data
+
+exec nginx -g 'daemon off;'
