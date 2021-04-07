@@ -13,9 +13,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - tag: 7.4
+          - tag: '7.4'
             dockerfile: php74.Dockerfile
-          - tag: 8.0
+          - tag: '8.0'
             dockerfile: php80.Dockerfile
 
     steps:
