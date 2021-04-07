@@ -14,6 +14,3 @@ chown -R www-data:www-data . \
 && chmod ug+wx -R storage bootstrap
 
 php artisan package:discover
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache

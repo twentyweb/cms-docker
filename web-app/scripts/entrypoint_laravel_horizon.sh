@@ -7,6 +7,8 @@ fi
 
 set -e
 
+/scripts/runtime_cache.sh
+
 cd /app
 
 php artisan horizon

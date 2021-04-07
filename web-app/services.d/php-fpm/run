@@ -1,7 +1,5 @@
 #!/usr/bin/with-contenv sh
 
-#su www-data
-
 s6-setuidgid www-data
 
-exec /usr/local/sbin/php-fpm --nodaemonize
+php-fpm --nodaemonize

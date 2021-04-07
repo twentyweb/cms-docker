@@ -7,6 +7,6 @@ fi
 
 set -e
 
-cd /app
+/scripts/runtime_cache.sh
 
 /init
