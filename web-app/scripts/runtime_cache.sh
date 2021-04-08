@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Fix: telescope requires cache connection on registration
-export TELESCOPE_ENABLED=false
-
 cd /app
 
 php artisan config:cache || true
