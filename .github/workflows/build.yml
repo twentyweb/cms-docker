@@ -12,6 +12,7 @@ jobs:
 
     strategy:
       matrix:
+        platform: ['linux/amd64', 'linux/arm64']
         include:
           - tag: '7.4'
             dockerfile: php74.Dockerfile
@@ -38,16 +39,16 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-base-${{ matrix.tag }}-${{ github.sha }}
+          key: ${{ runner.os }}-buildx-base-${{ matrix.tag }}-${{ matrix.platform }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-buildx-base-${{ matrix.tag }}
+            ${{ runner.os }}-buildx-base-${{ matrix.tag }}-${{ matrix.platform }}
 
       - name: Build docker image
         uses: docker/build-push-action@v2
         with:
           context: ./base
           file: ./base/${{ matrix.dockerfile }}
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ matrix.platform }}
           cache-from: |
             type=local,src=/tmp/.buildx-cache
             twentyweb/cms-base:${{ matrix.tag }}
