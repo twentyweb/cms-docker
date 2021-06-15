@@ -14,6 +14,6 @@ cd /app
 NAME=${NAME:-default}
 QUEUE=${QUEUE:-default}
 TRIES=${TRIES:-1}
-TIMEOUT=${TRIES:-1}
+TIMEOUT=${TIMEOUT:-1}
 
 php artisan queue:work --verbose --name=$NAME --queue=$QUEUE --tries=$TRIES --timeout=$TIMEOUT
