@@ -17,6 +17,8 @@ jobs:
             dockerfile: php74.Dockerfile
           - tag: '8.0'
             dockerfile: php80.Dockerfile
+          - tag: '8.1'
+            dockerfile: php81.Dockerfile
 
     steps:
       - name: Checkout code
@@ -133,6 +135,8 @@ jobs:
             dockerfile: php74.Dockerfile
           - tag: '8.0'
             dockerfile: php80.Dockerfile
+          - tag: '8.1'
+            dockerfile: php81.Dockerfile
 
     steps:
       - name: Checkout code
@@ -221,6 +225,10 @@ jobs:
             dockerfile: php80.Dockerfile
           - tag: '8.0-puppeteer'
             dockerfile: php80-puppeteer.Dockerfile
+          - tag: '8.1'
+            dockerfile: php81.Dockerfile
+          - tag: '8.1-puppeteer'
+            dockerfile: php81-puppeteer.Dockerfile
 
     steps:
       - name: Checkout code
