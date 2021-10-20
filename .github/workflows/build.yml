@@ -257,7 +257,7 @@ jobs:
   web-app-puppeteer:
     runs-on: ubuntu-latest
     needs:
-      - base
+      - web-app
 
     strategy:
       matrix:
