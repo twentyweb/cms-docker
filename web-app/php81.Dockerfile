@@ -1,5 +1,7 @@
 FROM twentyweb/cms-base:8.1
 
+ARG TARGETARCH
+
 RUN apk add --no-cache mysql-client \
   nginx \
   nginx-mod-http-xslt-filter \
@@ -22,8 +24,15 @@ RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
 COPY php/conf.d $PHP_INI_DIR/conf.d/
 COPY php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-ADD https://github.com/just-containers/s6-overlay/releases/download/v2.2.0.1/s6-overlay-amd64-installer /tmp/
-RUN chmod +x /tmp/s6-overlay-amd64-installer && /tmp/s6-overlay-amd64-installer /
+ENV S6_OVERLAY_VERSION=v2.2.0.3
+RUN case ${TARGETARCH} in \
+         "amd64")  S6_OVERLAY_ARCH=amd64  ;; \
+         "arm64")  S6_OVERLAY_ARCH=aarch64  ;; \
+    esac \
+  && curl -sSL -o s6-overlay-installer "https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-${S6_OVERLAY_ARCH}-installer" \
+  && chmod +x s6-overlay-installer \
+  && ./s6-overlay-installer / \
+  && rm -rf ./s6-overlay-installer
 
 RUN rm -rf /var/cache/apk/* && \
         rm -rf /tmp/*
