@@ -117,10 +117,10 @@ jobs:
           file: ./nginx/Dockerfile
           platforms: linux/amd64,linux/arm64
           cache-from: |
-            twentyweb/cms-assets:latest
+            twentyweb/cms-nginx:latest
           push: true
           tags: |
-            twentyweb/cms-assets:latest
+            twentyweb/cms-nginx:latest
 
 
   composer:
