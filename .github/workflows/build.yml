@@ -264,8 +264,12 @@ jobs:
         include:
           - tag: '8.0-puppeteer'
             dockerfile: php80-puppeteer.Dockerfile
+          - tag: '8.0-puppeteer-firefox'
+            dockerfile: php80-puppeteer-firefox.Dockerfile
           - tag: '8.1-puppeteer'
             dockerfile: php81-puppeteer.Dockerfile
+          - tag: '8.1-puppeteer-firefox'
+            dockerfile: php81-puppeteer-firefox.Dockerfile
 
     steps:
       - name: Checkout code
