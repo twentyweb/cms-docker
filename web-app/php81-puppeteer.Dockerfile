@@ -3,15 +3,11 @@ FROM twentyweb/cms-web-app:8.1
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium-browser
 
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/v3.13/main" >> /etc/apk/repositories \
-    && echo "https://dl-cdn.alpinelinux.org/alpine/v3.13/community" >> /etc/apk/repositories \
-    && apk update \
+RUN apk update \
     && apk add --no-cache \
+      mysql-client \
       nodejs \
       npm \
-      chromium=86.0.4240.111-r0 \
-      harfbuzz=2.7.4-r1 \
-      nss \
-      freetype \
+      chromium=99.0.4844.84-r0 \
       ttf-freefont \
-    && npm install --global --unsafe-perm puppeteer@5.3.0
+    && npm install --global --unsafe-perm puppeteer@13.4.1
