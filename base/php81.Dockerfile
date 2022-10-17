@@ -22,4 +22,6 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
         imagick \
         exif \
         redis \
-    && apk add --no-cache musl-locales
+    && apk add --no-cache \
+      musl-locales \
+      less
