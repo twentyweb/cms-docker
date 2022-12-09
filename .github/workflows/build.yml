@@ -48,7 +48,7 @@ jobs:
             ${{ runner.os }}-buildx-base-${{ matrix.tag }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./base
           file: ./base/${{ matrix.dockerfile }}
@@ -82,7 +82,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./assets
           file: ./assets/Dockerfile
@@ -114,7 +114,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./nginx
           file: ./nginx/Dockerfile
@@ -160,7 +160,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./composer
           file: ./composer/${{ matrix.dockerfile }}
@@ -206,7 +206,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./app
           file: ./app/${{ matrix.dockerfile }}
@@ -250,7 +250,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./web-app
           file: ./web-app/${{ matrix.dockerfile }}
@@ -299,7 +299,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build docker image
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           context: ./web-app
           file: ./web-app/${{ matrix.dockerfile }}
