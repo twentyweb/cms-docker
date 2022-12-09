@@ -8,6 +8,6 @@ RUN apk update \
       mysql-client \
       nodejs \
       npm \
-      chromium=99.0.4844.84-r0 \
+      chromium \
       ttf-freefont \
-    && npm install --global --unsafe-perm puppeteer@13.4.1
+    && npm install --global --unsafe-perm puppeteer@14.1.2 # chromium v102
