@@ -140,6 +140,8 @@ jobs:
             dockerfile: php80.Dockerfile
           - tag: '8.1'
             dockerfile: php81.Dockerfile
+          - tag: '8.2'
+            dockerfile: php82.Dockerfile
 
     steps:
       - name: Checkout code
@@ -228,6 +230,8 @@ jobs:
             dockerfile: php80.Dockerfile
           - tag: '8.1'
             dockerfile: php81.Dockerfile
+          - tag: '8.2'
+            dockerfile: php82.Dockerfile
 
     steps:
       - name: Checkout code
@@ -273,6 +277,10 @@ jobs:
             dockerfile: php81-puppeteer.Dockerfile
           - tag: '8.1-puppeteer-firefox'
             dockerfile: php81-puppeteer-firefox.Dockerfile
+          - tag: '8.2-puppeteer'
+            dockerfile: php82-puppeteer.Dockerfile
+          - tag: '8.2-puppeteer-firefox'
+            dockerfile: php82-puppeteer-firefox.Dockerfile
 
     steps:
       - name: Checkout code
