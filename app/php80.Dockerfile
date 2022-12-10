@@ -8,9 +8,9 @@ RUN apk update \
       mysql-client \
       nodejs \
       npm \
-      chromium=99.0.4844.84-r0 \
+      chromium \
       ttf-freefont \
-    && npm install --global --unsafe-perm puppeteer@13.4.1
+    && npm install --global --unsafe-perm puppeteer@14.1.2 # chromium v102
 
 RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY conf.d $PHP_INI_DIR/conf.d/
