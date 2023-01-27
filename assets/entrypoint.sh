@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [ "$1" = 'backend' ]; then
     yarn install --non-interactive --silent
     yarn run backend:prod

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 isCommand() {
   for cmd in \
     "about" \
