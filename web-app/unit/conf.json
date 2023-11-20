@@ -1,11 +1,14 @@
 {
     "listeners": {
         "*:80": {
-            "pass": "routes"
+            "pass": "routes/main"
+        },
+        "*:8000": {
+            "pass": "routes/health"
         }
     },
-    "routes": [
-        {
+    "routes": {
+        "main": {
             "match": {
                 "uri": "!/index.php"
             },
@@ -15,8 +18,13 @@
                     "pass": "applications/laravel"
                 }
             }
+        },
+        "health": {
+            "action": {
+                "return": 200
+            }
         }
-    ],
+    },
     "applications": {
         "laravel": {
             "type": "php",
