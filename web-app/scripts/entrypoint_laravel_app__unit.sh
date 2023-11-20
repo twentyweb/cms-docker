@@ -9,6 +9,4 @@ set -e
 
 /scripts/runtime_cache.sh
 
-cd /app
-
-php artisan schedule:work
+unitd --no-daemon --log /dev/stdout

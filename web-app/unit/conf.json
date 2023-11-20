@@ -1,0 +1,36 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        }
+    },
+    "routes": [
+        {
+            "match": {
+                "uri": "!/index.php"
+            },
+            "action": {
+                "share": "/app/public$uri",
+                "fallback": {
+                    "pass": "applications/laravel"
+                }
+            }
+        }
+    ],
+    "applications": {
+        "laravel": {
+            "type": "php",
+            "root": "/app/public/",
+            "script": "index.php"
+        }
+    },
+    "access_log": {
+        "path": "/dev/stdout"
+    },
+    "settings": {
+        "http": {
+            "server_version": false,
+            "max_body_size": 268435456
+        }
+    }
+}

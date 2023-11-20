@@ -1,4 +1,4 @@
-FROM php:8.1-fpm-alpine3.17
+FROM php:8.1-fpm-alpine3.18
 
 ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 
@@ -23,5 +23,5 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
         exif \
         redis \
     && apk add --no-cache \
-      musl-locales \
-      less
+        musl-locales \
+        less
