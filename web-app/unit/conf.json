@@ -8,22 +8,26 @@
         }
     },
     "routes": {
-        "main": {
-            "match": {
-                "uri": "!/index.php"
-            },
-            "action": {
-                "share": "/app/public$uri",
-                "fallback": {
-                    "pass": "applications/laravel"
+        "main": [
+            {
+                "match": {
+                    "uri": "!/index.php"
+                },
+                "action": {
+                    "share": "/app/public$uri",
+                    "fallback": {
+                        "pass": "applications/laravel"
+                    }
                 }
             }
-        },
-        "health": {
-            "action": {
-                "return": 200
+        ],
+        "health": [
+            {
+                "action": {
+                    "return": 200
+                }
             }
-        }
+        ]
     },
     "applications": {
         "laravel": {
