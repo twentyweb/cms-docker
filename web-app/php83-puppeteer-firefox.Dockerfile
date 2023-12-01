@@ -1,4 +1,4 @@
-FROM twentyweb/cms-web-app:8.0
+FROM twentyweb/cms-web-app:8.3
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV PUPPETEER_PRODUCT=firefox

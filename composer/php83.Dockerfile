@@ -1,4 +1,6 @@
-FROM twentyweb/cms-base:8.0
+# syntax=docker/dockerfile:1
+
+FROM twentyweb/cms-base:8.3
 
 RUN apk add git
 

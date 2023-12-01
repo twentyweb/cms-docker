@@ -1,4 +1,4 @@
-FROM twentyweb/cms-base:8.0
+FROM twentyweb/cms-base:8.3
 
 ARG TARGETARCH
 
@@ -6,9 +6,13 @@ RUN apk add --no-cache mysql-client \
   nginx \
   nginx-mod-http-xslt-filter \
   nginx-mod-http-geoip \
+  php83-fpm \
   tzdata \
   curl \
   ca-certificates
+
+RUN ln -s /usr/sbin/php-fpm83 /usr/sbin/php-fpm \
+    && adduser -D -H -G www-data www-data
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
@@ -19,10 +23,9 @@ COPY nginx/conf.d /etc/nginx/conf.d/
 COPY nginx/default.conf /etc/nginx/sites-enabled/
 COPY nginx/health.conf /etc/nginx/sites-enabled/
 
-RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-  && rm /usr/local/etc/php-fpm.d/zz-docker.conf
-COPY php/conf.d $PHP_INI_DIR/conf.d/
-COPY php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
+ADD https://raw.githubusercontent.com/php/php-src/PHP-8.3/php.ini-production /etc/php83/php.ini
+COPY php/conf.d /etc/php83/conf.d/
+COPY php/php-fpm.d/www.conf /etc/php83/php-fpm.d/www.conf
 
 ENV S6_OVERLAY_VERSION=v2.2.0.3
 RUN case ${TARGETARCH} in \
