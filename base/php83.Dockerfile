@@ -6,8 +6,7 @@ ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 
 WORKDIR /app
 
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk update && \
+RUN apk update && \
     apk add --no-cache \
       bash \
       curl \
@@ -32,7 +31,7 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/reposi
       php83-pdo_sqlite \
 #      php83-pecl-imagick \
       php83-pecl-redis \
-#      php83-pecl-yaml \
+      php83-pecl-yaml \
       php83-phar \
       php83-posix \
       php83-session \
