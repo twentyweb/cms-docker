@@ -10,4 +10,5 @@ RUN apk update \
       npm \
       chromium \
       ttf-freefont \
-    && npm install --global --unsafe-perm puppeteer@21.4.1 # chromium v118
+    && npm install --global --unsafe-perm puppeteer \
+    && npx @puppeteer/browsers install chrome@stable

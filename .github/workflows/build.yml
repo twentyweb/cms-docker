@@ -193,8 +193,8 @@ jobs:
             dockerfile: php82-puppeteer.Dockerfile
           - tag: "8.2-puppeteer-firefox"
             dockerfile: php82-puppeteer-firefox.Dockerfile
-#          - tag: "8.3-puppeteer"
-#            dockerfile: php83-puppeteer.Dockerfile
+          - tag: "8.3-puppeteer"
+            dockerfile: php83-puppeteer.Dockerfile
           - tag: "8.3-puppeteer-firefox"
             dockerfile: php83-puppeteer-firefox.Dockerfile
 

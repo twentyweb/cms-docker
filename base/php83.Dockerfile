@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:edge
+FROM alpine:3.19
 
 ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 
@@ -29,7 +29,7 @@ RUN apk update && \
       php83-pcntl \
       php83-pdo_mysql \
       php83-pdo_sqlite \
-#      php83-pecl-imagick \
+      php83-pecl-imagick \
       php83-pecl-redis \
       php83-pecl-yaml \
       php83-phar \
