@@ -24,6 +24,8 @@ jobs:
     with:
       tag: ${{ matrix.tag }}
       dockerfile: ${{ matrix.dockerfile }}
+    secrets:
+      DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
 
   assets:
     runs-on: ubuntu-latest

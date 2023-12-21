@@ -2,6 +2,9 @@ name: build php
 
 on:
   workflow_call:
+    secrets:
+      DOCKER_HUB_TOKEN:
+        required: true
     inputs:
       tag:
         type: string
