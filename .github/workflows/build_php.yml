@@ -21,8 +21,6 @@ jobs:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
 
-    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -72,8 +70,6 @@ jobs:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
 
-    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -112,8 +108,6 @@ jobs:
         include:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
-
-    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
@@ -156,8 +150,6 @@ jobs:
           - tag: ${{ inputs.tag }}-puppeteer-firefox
             dockerfile: ${{ inputs.dockerfile }}-puppeteer-firefox.Dockerfile
 
-    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -197,7 +189,7 @@ jobs:
           - tag: ${{ inputs.tag }}-unit
             dockerfile: ${{ inputs.dockerfile }}-unit.Dockerfile
 
-    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
+    if: inputs.tag != '8.1' && inputs.tag != '8.2'
 
     steps:
       - name: Checkout code
