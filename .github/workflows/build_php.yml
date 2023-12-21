@@ -21,7 +21,7 @@ jobs:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
 
-    if: ${{ hashFiles(matrix.dockerfile) != '' }}
+    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
@@ -72,7 +72,7 @@ jobs:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
 
-    if: ${{ hashFiles(matrix.dockerfile) != '' }}
+    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
@@ -113,7 +113,7 @@ jobs:
           - tag: ${{ inputs.tag }}
             dockerfile: ${{ inputs.dockerfile }}.Dockerfile
 
-    if: ${{ hashFiles(matrix.dockerfile) != '' }}
+    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
@@ -156,7 +156,7 @@ jobs:
           - tag: ${{ inputs.tag }}-puppeteer-firefox
             dockerfile: ${{ inputs.dockerfile }}-puppeteer-firefox.Dockerfile
 
-    if: ${{ hashFiles(matrix.dockerfile) != '' }}
+    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
@@ -197,7 +197,7 @@ jobs:
           - tag: ${{ inputs.tag }}-unit
             dockerfile: ${{ inputs.dockerfile }}-unit.Dockerfile
 
-    if: ${{ hashFiles(matrix.dockerfile) != '' }}
+    if: ${{ always() && hashFiles(matrix.dockerfile) != '' }}
 
     steps:
       - name: Checkout code
