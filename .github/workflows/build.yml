@@ -14,11 +14,11 @@ jobs:
       matrix:
         include:
           - tag: 8.1
-            dockerfile: php81.Dockerfile
+            dockerfile: php81
           - tag: 8.2
-            dockerfile: php82.Dockerfile
+            dockerfile: php82
           - tag: 8.3
-            dockerfile: php83.Dockerfile
+            dockerfile: php83
 
     uses: ./.github/workflows/build_php.yml
     with:
