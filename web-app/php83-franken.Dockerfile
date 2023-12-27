@@ -7,7 +7,11 @@ ARG TARGETARCH
 RUN apk add --no-cache mysql-client \
     tzdata \
     curl \
-    ca-certificates
+    ca-certificates \
+    gnu-libiconv
+
+COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/bin/frankenphp /usr/local/bin/frankenphp
+COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/lib/libphp.so /usr/local/lib/libphp.so
 
 COPY franken/Caddyfile /etc/caddy/Caddyfile
 
@@ -18,9 +22,6 @@ RUN rm -rf /var/cache/apk/* && \
         rm -rf /tmp/*
 
 COPY scripts /scripts
-
-COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/bin/frankenphp /usr/local/bin/frankenphp
-COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/lib/libphp.so /usr/local/lib/libphp.so
 
 RUN chmod +x /scripts/* \
     && rm -rf /scripts/entrypoint_laravel_app.sh \
