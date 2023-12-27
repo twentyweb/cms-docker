@@ -14,13 +14,16 @@ RUN apk update && \
       musl-locales \
       php83 \
       php83-bcmath \
+      php83-ctype \
       php83-curl \
       php83-dom \
       php83-exif \
       php83-fileinfo \
+      php83-ftp \
       php83-gd \
       php83-gettext \
       php83-gmp \
+      php83-iconv \
       php83-intl \
       php83-mbstring \
       php83-mysqli \
@@ -38,6 +41,7 @@ RUN apk update && \
       php83-simplexml \
       php83-soap \
       php83-sockets \
+      php83-sodium \
       php83-sqlite3 \
       php83-tokenizer \
       php83-xml \

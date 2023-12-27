@@ -23,5 +23,6 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions \
         exif \
         redis \
     && apk add --no-cache \
+        bash \
         musl-locales \
         less
