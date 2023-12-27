@@ -19,7 +19,8 @@ RUN rm -rf /var/cache/apk/* && \
 
 COPY scripts /scripts
 
-COPY --from=dunglas/frankenphp:1-php8.3 /usr/local/bin/frankenphp /usr/local/bin/frankenphp
+COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/bin/frankenphp /usr/local/bin/frankenphp
+COPY --from=dunglas/frankenphp:1-php8.3-alpine /usr/local/lib/libphp.so /usr/local/lib/libphp.so
 
 RUN chmod +x /scripts/* \
     && rm -rf /scripts/entrypoint_laravel_app.sh \
