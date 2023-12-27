@@ -1,0 +1,11 @@
+{
+	frankenphp
+	order php_server before file_server
+}
+
+:80 {
+	root * public/
+	php_server {
+		resolve_root_symlink
+	}
+}
