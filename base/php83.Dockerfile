@@ -7,6 +7,7 @@ ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 WORKDIR /app
 
 RUN apk update && \
+    apk upgrade && \
     apk add --no-cache \
       bash \
       curl \
