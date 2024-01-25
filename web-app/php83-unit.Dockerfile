@@ -23,7 +23,6 @@ COPY scripts /scripts
 
 RUN chmod +x /scripts/* \
     && rm -rf /scripts/entrypoint_laravel_app.sh \
-    && rm -rf /scripts/entrypoint_laravel_app__franken.sh \
     && mv /scripts/entrypoint_laravel_app__unit.sh /scripts/entrypoint_laravel_app.sh \
     && sed -i 's/www-data/unit/g' /scripts/prepare_laravel.sh
 
