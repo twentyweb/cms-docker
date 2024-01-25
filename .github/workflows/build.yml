@@ -52,9 +52,8 @@ jobs:
           context: ./assets
           file: ./assets/Dockerfile
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            twentyweb/cms-assets:latest
           push: true
+          pull: true
           tags: |
             twentyweb/cms-assets:latest
 

@@ -37,24 +37,12 @@ jobs:
           username: cappuc
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Cache Docker layers
-        uses: actions/cache@v4
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-base-${{ matrix.tag }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-base-${{ matrix.tag }}
-
       - name: Build docker image
         uses: docker/build-push-action@v5
         with:
           context: ./base
           file: ./base/${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            type=local,src=/tmp/.buildx-cache
-            twentyweb/cms-base:${{ matrix.tag }}
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=all
           push: true
           pull: true
           tags: |
@@ -93,8 +81,6 @@ jobs:
           context: ./composer
           file: ./composer/${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            twentyweb/cms-composer:${{ matrix.tag }}
           push: true
           pull: true
           tags: |
@@ -133,8 +119,6 @@ jobs:
           context: ./web-app
           file: ./web-app/${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            twentyweb/cms-web-app:${{ matrix.tag }}
           push: true
           pull: true
           tags: |
@@ -175,8 +159,6 @@ jobs:
           context: ./web-app
           file: ./web-app/${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            twentyweb/cms-web-app:${{ matrix.tag }}
           push: true
           pull: true
           tags: |
@@ -217,8 +199,6 @@ jobs:
           context: ./web-app
           file: ./web-app/${{ matrix.dockerfile }}
           platforms: linux/amd64,linux/arm64
-          cache-from: |
-            twentyweb/cms-web-app:${{ matrix.tag }}
           push: true
           pull: true
           tags: |
