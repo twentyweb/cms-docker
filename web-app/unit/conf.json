@@ -11,6 +11,14 @@
         "main": [
             {
                 "match": {
+                    "uri": "/healthcheck"
+                },
+                "action": {
+                    "return": 200
+                }
+            },
+            {
+                "match": {
                     "uri": "!/index.php"
                 },
                 "action": {
@@ -33,7 +41,12 @@
         "laravel": {
             "type": "php",
             "root": "/app/public/",
-            "script": "index.php"
+            "script": "index.php",
+            "processes": {
+                "max": 12,
+                "spare": 1,
+                "idle_timeout": 30
+            }
         }
     },
     "access_log": {
