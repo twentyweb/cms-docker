@@ -2,7 +2,9 @@
 
 cd /app
 
-if [ -f artisan ] && ["$DISABLE_CACHE" != "false"]; then
+DISABLE_CACHE=${DISABLE_CACHE:=false}
+
+if [ -f artisan ] && [ "$DISABLE_CACHE" != true ]; then
     php artisan config:cache || true
     php artisan route:cache || true
     php artisan view:cache || true
