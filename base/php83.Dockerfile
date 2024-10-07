@@ -50,5 +50,3 @@ RUN apk update && \
   php83-xmlwriter \
   php83-xsl \
   php83-zip
-
-RUN ln -s /usr/bin/php83 /usr/bin/php
