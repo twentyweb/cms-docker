@@ -12,7 +12,10 @@ RUN apk update \
   ttf-freefont \
   && npm install --global --unsafe-perm puppeteer
 
+RUN mkdir -p /home/www-data \
+  && chown -R www-data:www-data /home/www-data
+
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
-RUN chmod +x /scripts/puppeteer/*.sh
-# RUN /scripts/puppeteer/puppeteer_test.sh
+RUN chmod +x /scripts/puppeteer/*.sh \
+  && su www-data -c "/scripts/puppeteer/puppeteer_test.sh"

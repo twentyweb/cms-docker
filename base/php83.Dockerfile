@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.19
+FROM alpine:3.20
 
 ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 
@@ -50,5 +50,3 @@ RUN apk update && \
   php83-xmlwriter \
   php83-xsl \
   php83-zip
-
-RUN ln -s /usr/bin/php83 /usr/bin/php

@@ -10,9 +10,12 @@ RUN apk update \
   npm \
   chromium \
   ttf-freefont \
-  && npm install --location=global puppeteer@22.8.2
+  && npm install --location=global puppeteer
+
+RUN mkdir -p /home/www-data \
+  && chown -R www-data:www-data /home/www-data
 
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
-RUN chmod +x /scripts/puppeteer/*.sh
-# RUN /scripts/puppeteer/puppeteer_test.sh
+RUN chmod +x /scripts/puppeteer/*.sh \
+  && su www-data -c "/scripts/puppeteer/puppeteer_test.sh"

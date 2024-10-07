@@ -11,6 +11,9 @@ RUN apk update \
   firefox \
   && npm install --global --unsafe-perm puppeteer
 
+RUN mkdir -p /home/www-data \
+  && chown -R www-data:www-data /home/www-data
+
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
 RUN chmod +x /scripts/puppeteer/*.sh
