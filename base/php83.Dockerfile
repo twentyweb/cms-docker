@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.20
+FROM alpine:3.19
 
 ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
 

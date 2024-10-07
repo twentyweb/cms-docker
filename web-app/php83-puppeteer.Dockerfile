@@ -10,7 +10,7 @@ RUN apk update \
   npm \
   chromium \
   ttf-freefont \
-  && npm install --global --unsafe-perm puppeteer
+  && npm install --location=global puppeteer@22.8.2
 
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
