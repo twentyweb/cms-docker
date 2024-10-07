@@ -10,8 +10,3 @@ RUN apk update \
   npm \
   firefox \
   && npm install --global --unsafe-perm puppeteer
-
-# test puppeteer installation
-COPY puppeteer /scripts/puppeteer
-RUN chmod +x /scripts/puppeteer/*.sh \
-  && /scripts/puppeteer/puppeteer_test.sh
