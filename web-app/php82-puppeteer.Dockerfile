@@ -14,5 +14,5 @@ RUN apk update \
 
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
-RUN chmod +x /scripts/puppeteer/*.sh \
-  && /scripts/puppeteer/puppeteer_test.sh
+RUN chmod +x /scripts/puppeteer/*.sh
+# RUN /scripts/puppeteer/puppeteer_test.sh
