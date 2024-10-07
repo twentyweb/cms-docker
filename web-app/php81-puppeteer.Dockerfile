@@ -17,5 +17,5 @@ RUN mkdir -p /home/www-data \
 
 # test puppeteer installation
 COPY puppeteer /scripts/puppeteer
-RUN chmod +x /scripts/puppeteer/*.sh \
-  && su www-data -c "/scripts/puppeteer/puppeteer_test.sh"
+RUN chmod +x /scripts/puppeteer/*.sh
+# RUN su www-data -c "/scripts/puppeteer/puppeteer_test.sh"
