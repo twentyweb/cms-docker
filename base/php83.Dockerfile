@@ -2,7 +2,7 @@
 
 FROM alpine:3.20
 
-ENV MUSL_LOCPATH /usr/share/i18n/locales/musl
+ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl
 
 WORKDIR /app
 
