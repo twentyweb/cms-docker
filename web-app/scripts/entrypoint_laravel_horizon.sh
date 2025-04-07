@@ -11,4 +11,4 @@ set -e
 
 cd /app
 
-php artisan horizon
+exec php artisan horizon

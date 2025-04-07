@@ -1,6 +1,9 @@
-FROM twentyweb/cms-base:8.1
+# syntax=docker/dockerfile:1
 
-ARG TARGETARCH
+ARG S6_OVERLAY_VERSION=v2.2.0.3
+ARG SUPERCRONIC_VERSION=v0.2.33
+
+FROM twentyweb/cms-base:8.1
 
 RUN apk add --no-cache mysql-client \
   nginx \
@@ -24,7 +27,8 @@ RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
 COPY php/conf.d $PHP_INI_DIR/conf.d/
 COPY php/php-fpm.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 
-ENV S6_OVERLAY_VERSION=v2.2.0.3
+ARG S6_OVERLAY_VERSION
+ARG TARGETARCH
 RUN case ${TARGETARCH} in \
          "amd64")  S6_OVERLAY_ARCH=amd64  ;; \
          "arm64")  S6_OVERLAY_ARCH=aarch64  ;; \
@@ -33,6 +37,12 @@ RUN case ${TARGETARCH} in \
   && chmod +x s6-overlay-installer \
   && ./s6-overlay-installer / \
   && rm -rf ./s6-overlay-installer
+
+ARG SUPERCRONIC_VERSION
+ARG TARGETARCH
+RUN curl -sSL -o supercronic "https://github.com/aptible/supercronic/releases/download/${SUPERCRONIC_VERSION}/supercronic-linux-${TARGETARCH}" \
+    && chmod +x supercronic \
+    && mv supercronic /usr/local/bin/supercronic
 
 RUN rm -rf /var/cache/apk/* && \
         rm -rf /tmp/*

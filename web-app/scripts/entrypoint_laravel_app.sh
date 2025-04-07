@@ -3,10 +3,16 @@
 /scripts/runtime_cache.sh
 
 if [ $# -ne 0 ]; then
+	if [ "$*" = "php artisan schedule:work" ]; then
+		echo "* * * * * cd /app && php artisan schedule:run" >/tmp/crontab
+		exec /usr/local/bin/supercronic /tmp/crontab
+		exit 0
+	fi
+
 	exec "$@"
 	exit 0
 fi
 
 set -e
 
-/init
+exec /init

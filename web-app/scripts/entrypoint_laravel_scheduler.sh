@@ -9,6 +9,5 @@ fi
 
 set -e
 
-cd /app
-
-php artisan schedule:work
+echo "* * * * * cd /app && php artisan schedule:run" >/tmp/crontab
+exec /usr/local/bin/supercronic /tmp/crontab

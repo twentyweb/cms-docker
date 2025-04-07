@@ -9,4 +9,4 @@ fi
 
 set -e
 
-unitd --no-daemon --log /dev/stdout
+exec unitd --no-daemon --log /dev/stdout
